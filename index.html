@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages Personnalisés pour les Invités</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script type="module">
+        // Initialisation de Firebase (inchangée)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+        import { getFirestore, doc, setDoc, onSnapshot, updateDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDPCMCi4BB2dySCc8G4adLYQXJSk-903v0",
+            authDomain: "weddingchart.firebaseapp.com",
+            projectId: "weddingchart",
+            storageBucket: "weddingchart.firebasestorage.app",
+            messagingSenderId: "345074315998",
+            appId: "1:345074315998:web:ae600053bcbe04a977884f"
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        // Exposer les services Firebase à la fenêtre globale
+        window.firebaseServices = {
+            db: getFirestore(app),
+            doc, setDoc, onSnapshot, updateDoc
+        };
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Messages pour nos invités 💌</h1>
+        <p>Faites glisser les noms pour changer l'ordre. Les messages sont sauvegardés automatiquement.</p>
+    </div>
+
+    <div class="main-container">
+        <div class="list-wrapper">
+            <h2>Invités de Long Vân</h2>
+            <div id="groom-guests" class="guest-list">
+                </div>
+        </div>
+
+        <div class="list-wrapper">
+            <h2>Invités de Manal</h2>
+            <div id="bride-guests" class="guest-list">
+                </div>
+        </div>
+
+        <div class="list-wrapper">
+            <h2>Messages pour ses invités</h2>
+            <div id="groom-messages" class="message-list">
+                </div>
+        </div>
+
+        <div class="list-wrapper">
+            <h2>Messages pour ses invités</h2>
+            <div id="bride-messages" class="message-list">
+                </div>
+        </div>
+    </div>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>
